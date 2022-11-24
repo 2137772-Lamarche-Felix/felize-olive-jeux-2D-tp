@@ -14,9 +14,26 @@ config/name="kaamelott"
 run/main_scene="res://scenes/MainNiveau1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://script/Global.gd"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+ui_space={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 

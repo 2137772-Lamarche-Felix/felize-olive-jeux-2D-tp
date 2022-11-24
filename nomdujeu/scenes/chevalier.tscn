@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://assets/textures/chevalier/_Idle.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/chevalier/_Run.png" type="Texture" id=2]
@@ -6,8 +6,123 @@
 [ext_resource path="res://script/chevalierMove.gd" type="Script" id=4]
 [ext_resource path="res://assets/textures/chevalier/_Fall.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/chevalier/_Jump.png" type="Texture" id=6]
+[ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/textures/chevalier/_CrouchWalk.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/chevalier/_CrouchFull.png" type="Texture" id=9]
+[ext_resource path="res://assets/textures/chevalier/attaque/_AttackNoMovement.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/chevalier/attaque/_Attack.png" type="Texture" id=11]
+[ext_resource path="res://script/EpeHitbox.gd" type="Script" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
+
+[sub_resource type="CapsuleShape2D" id=42]
+radius = 12.0
+height = 4.0
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 120, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 240, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 120, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 240, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 360, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 480, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 600, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 720, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 840, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 120, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=48]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=49]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 120, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=50]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 240, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=51]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 360, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 120, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=46]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 240, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=47]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 360, 40, 120, 40 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 120, 40, 120, 40 )
 
 [sub_resource type="AtlasTexture" id=23]
 flags = 4
@@ -141,6 +256,36 @@ region = Rect2( 1080, 40, 120, 40 )
 
 [sub_resource type="SpriteFrames" id=22]
 animations = [ {
+"frames": [ SubResource( 29 ), SubResource( 30 ) ],
+"loop": true,
+"name": "CrouchToWalk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
+"loop": true,
+"name": "CrouchWalking",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 39 ), SubResource( 40 ) ],
+"loop": true,
+"name": "WalkToCrouch",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ) ],
+"loop": true,
+"name": "attaque",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"loop": true,
+"name": "attaque1",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 41 ) ],
+"loop": true,
+"name": "crouch",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
 "name": "fall",
@@ -162,21 +307,35 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="CircleShape2D" id=52]
+radius = 21.0
+
+[sub_resource type="CircleShape2D" id=53]
+radius = 21.0
+
+[sub_resource type="CapsuleShape2D" id=43]
+radius = 5.0
+height = 0.0
+
 [node name="chevalier" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 script = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-visible = false
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="KinematicBody2D"]
 shape = SubResource( 1 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 0, 6 )
+shape = SubResource( 42 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
+position = Vector2( 5, -1 )
 frames = SubResource( 22 )
-animation = "jump"
+animation = "attaque"
 frame = 1
-speed_scale = 2.5
+speed_scale = 2.0
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
@@ -184,3 +343,31 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_left = 0
 limit_bottom = 448
+
+[node name="Area2DEpeDroite" type="Area2D" parent="KinematicBody2D"]
+script = ExtResource( 12 )
+
+[node name="EpeCollisionDroite" type="CollisionShape2D" parent="KinematicBody2D/Area2DEpeDroite"]
+position = Vector2( 40, -1 )
+shape = SubResource( 52 )
+disabled = true
+
+[node name="Area2DEpeGauche" type="Area2D" parent="KinematicBody2D"]
+
+[node name="EpeCollisionGauche" type="CollisionShape2D" parent="KinematicBody2D/Area2DEpeGauche"]
+position = Vector2( -31, 1 )
+shape = SubResource( 53 )
+disabled = true
+
+[node name="Area2DPlafond" type="Area2D" parent="KinematicBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Area2DPlafond"]
+position = Vector2( 0, -15 )
+shape = SubResource( 43 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 7 )]
+
+[connection signal="body_entered" from="KinematicBody2D/Area2DEpeDroite" to="KinematicBody2D" method="_on_Area2DEpe_body_entered"]
+[connection signal="body_entered" from="KinematicBody2D/Area2DEpeDroite" to="KinematicBody2D/Area2DEpeDroite" method="_on_Area2DEpe_body_entered"]
+[connection signal="body_entered" from="KinematicBody2D/Area2DPlafond" to="KinematicBody2D" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="KinematicBody2D/Area2DPlafond" to="KinematicBody2D" method="_on_Area2D_body_exited"]
