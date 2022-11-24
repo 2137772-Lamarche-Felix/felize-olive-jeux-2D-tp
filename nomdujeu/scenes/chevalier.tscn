@@ -2,8 +2,8 @@
 
 [ext_resource path="res://assets/textures/chevalier/_Idle.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/chevalier/_Run.png" type="Texture" id=2]
-[ext_resource path="res://scenes/chevalier.gd" type="Script" id=3]
-[ext_resource path="res://scenes/chevalierMove.gd" type="Script" id=4]
+[ext_resource path="res://script/chevalier.gd" type="Script" id=3]
+[ext_resource path="res://script/chevalierMove.gd" type="Script" id=4]
 [ext_resource path="res://assets/textures/chevalier/_Fall.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/chevalier/_Jump.png" type="Texture" id=6]
 

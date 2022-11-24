@@ -4,6 +4,7 @@
 [ext_resource path="res://scenes/chevalier.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node2D"]
+position = Vector2( 1, 0 )
 
 [node name="niveau1" parent="." instance=ExtResource( 1 )]
 
