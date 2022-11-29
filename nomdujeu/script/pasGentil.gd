@@ -11,8 +11,24 @@ var regardeDroite = true
 
 var attaque = false
 
+#var attaqueAnim = false
+
+var current = false
+
+
+func cochonAttaque():
+		$AnimatedSprite.animation = "attaque"
+		$AnimatedSprite.speed_scale = 1.5
+		yield(get_tree().create_timer(0.4), "timeout")
+		Global._degat = true
+		yield(get_tree().create_timer(0.2), "timeout")
+		attaque = false
+		$Area_attaque/CollisionShape2D.disabled = true
+		$cooldownAttaque.start(1)	
+
 
 func _process(delta):
+	
 	
 	if hit == false and attaque == false:
 		$AnimatedSprite.animation = "iddle"
@@ -20,10 +36,14 @@ func _process(delta):
 	move.y += delta * gravity
 	move = move_and_slide(move,Vector2.UP)
 	
-	if Global._attaque == true:
+	if attaque == true:
+		cochonAttaque()
+	
+	if Global._attaque == true and current == true:
 		hit = true
 		yield(get_tree().create_timer(0.01), "timeout")
 		Global._attaque = false
+		current = false
 	if hit == true:
 		$AnimatedSprite.animation = "hit"
 		yield(get_tree().create_timer(0.5), "timeout")
@@ -36,19 +56,22 @@ func _on_detectGauche_body_entered(body):
 	if body.is_in_group("chevalier"):
 		$AnimatedSprite.flip_h = false
 		regardeDroite = true
+		current = true
 
 
 func _on_detectDroite_body_entered(body):
 	if body.is_in_group("chevalier"):
 		$AnimatedSprite.flip_h = true
 		regardeDroite = false
+		current = true
 
 
 func _on_Area_attaque_body_entered(body):
 	if body.is_in_group("chevalier"):
-		$AnimatedSprite.animation = "attaque"
 		attaque = true
-		
 
 func _on_Area_attaque_body_exited(body):
 	attaque = false
+	
+func _on_cooldownAttaque_timeout():
+	$Area_attaque/CollisionShape2D.disabled = false
