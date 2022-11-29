@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/_Attack.png-2ed67819871e746bd9096078c73b8a97.stex"
+path="res://.import/Box Pieces 1.png-f01675b4218dc7e643c6bae84123d12c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/chevalier/attaque/_Attack.png"
-dest_files=[ "res://.import/_Attack.png-2ed67819871e746bd9096078c73b8a97.stex" ]
+source_file="res://assets/textures/boite/Box Pieces 1.png"
+dest_files=[ "res://.import/Box Pieces 1.png-f01675b4218dc7e643c6bae84123d12c.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
