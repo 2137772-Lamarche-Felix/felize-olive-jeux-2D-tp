@@ -42,8 +42,14 @@ func _on_Area2D_body_exited(body):
 func _process(delta):
 	move = move_and_slide(move,Vector2.UP)
 	
+	if Global._degat == true:
+		$AnimatedSprite.animation="death"
+		$AnimatedSprite.speed_scale = 2
+		yield(get_tree().create_timer(1), "timeout")
+		Global._degat = false
+	
 	#sert à determiner si le joueur doit être accroupis ou non
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("ui_down") and Global._degat == false:
 		if crouch == false:
 			crouch = true
 			$CollisionShape2D2.disabled = true
@@ -61,12 +67,14 @@ func _process(delta):
 	
 	#si le joueur tombe dans dans le vide, l'animation de chute va jouer
 	#jusqu'à ce que le joueur touche un sol		
-	if !is_on_floor() and jumping == false and attaque == false:
-		$AnimatedSprite.animation = "fall"
-		Global.currentAnim = "fall"
+	if jumping == false and attaque == false and Global._degat == false:
+		yield(get_tree().create_timer(0.02), "timeout")
+		if !is_on_floor():
+			$AnimatedSprite.animation = "fall"
+			Global.currentAnim = "fall"
 		
 	#gère la touche espace(attaque+animation)	
-	if Input.is_action_just_pressed("ui_space"):
+	if Input.is_action_just_pressed("ui_space") and Global._degat == false:
 		if attaque == false:
 			$AnimatedSprite.animation = "attaque"
 			Global.currentAnim = "attaque"
@@ -99,7 +107,7 @@ func _physics_process(delta):
 	moving = false
 	
 	#code qui gere la touche de fleche de droite (movement + animations)	
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right") and Global._degat == false:
 		$AnimatedSprite.flip_h = false
 		regardeDroite = true
 		if attaque == false:
@@ -114,7 +122,7 @@ func _physics_process(delta):
 		moving = true
 		move.x = speed
 	#code qui gere la touche de fleche de gauche (movement + animations)
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("ui_left") and Global._degat == false:
 		move.x = -speed
 		$AnimatedSprite.flip_h = true
 		regardeDroite = false
@@ -138,7 +146,7 @@ func _physics_process(delta):
 	move.y += delta * gravity
 	
 	#code qui gere la touche fleche de haut (mouvement + animation)
-	if Input.is_action_just_pressed("ui_up") and is_on_floor():
+	if Input.is_action_just_pressed("ui_up") and is_on_floor() and Global._degat == false:
 		if bodyEntered == false:
 			move.y += -jump
 			crouch = false
@@ -153,7 +161,7 @@ func _physics_process(delta):
 	
 	#code qui sert juste à jouer l'animation de iddle si aucune autre
 	#animation plus importante joue actuellement
-	if moving == false and attaque == false:
+	if moving == false and attaque == false and Global._degat == false:
 		if crouch == true:
 			$AnimatedSprite.animation = "crouch"
 			Global.currentAnim = "crouch"
@@ -162,7 +170,7 @@ func _physics_process(delta):
 			Global.currentAnim = "iddle"
 			$AnimatedSprite.speed_scale = 1.25
 	#code qui sert à jouer l'animation de saut si aucune autre animation plus importante joue
-	if jumping == true and attaque == false:
+	if jumping == true and attaque == false and Global._degat == false:
 		$AnimatedSprite.animation = "jump"
 		Global.currentAnim = "jump"
 		yield(get_tree().create_timer(0.2), "timeout")
