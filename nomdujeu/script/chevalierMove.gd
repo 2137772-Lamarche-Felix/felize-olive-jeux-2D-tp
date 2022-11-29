@@ -50,22 +50,26 @@ func _process(delta):
 			$Area2DPlafond/CollisionShape2D.disabled = false
 			speed = 100
 			$AnimatedSprite.animation="WalkToCrouch"
+			Global.currentAnim = "walkToCrouch"
 		elif bodyEntered == false and crouch == true:
 			crouch = false
 			speed = 200
 			$Area2DPlafond/CollisionShape2D.disabled = true
 			$CollisionShape2D2.disabled = false
 			$AnimatedSprite.animation="CrouchToWalk"
+			Global.currentAnim = "crouchToWalk"
 	
 	#si le joueur tombe dans dans le vide, l'animation de chute va jouer
 	#jusqu'à ce que le joueur touche un sol		
 	if !is_on_floor() and jumping == false and attaque == false:
 		$AnimatedSprite.animation = "fall"
+		Global.currentAnim = "fall"
 		
 	#gère la touche espace(attaque+animation)	
 	if Input.is_action_just_pressed("ui_space"):
 		if attaque == false:
 			$AnimatedSprite.animation = "attaque"
+			Global.currentAnim = "attaque"
 			$AnimatedSprite.speed_scale = 2
 			attaque = true
 			
@@ -101,9 +105,11 @@ func _physics_process(delta):
 		if attaque == false:
 			if crouch == false:
 				$AnimatedSprite.animation = "run"
+				Global.currentAnim = "run"
 				$AnimatedSprite.speed_scale = 2.5
 			elif crouch ==true:
 				$AnimatedSprite.animation = "CrouchWalking"
+				Global.currentAnim = "crouchWalking"
 				$AnimatedSprite.speed_scale = 2.5
 		moving = true
 		move.x = speed
@@ -115,9 +121,11 @@ func _physics_process(delta):
 		if attaque == false:
 			if crouch == false:
 				$AnimatedSprite.animation = "run"
+				Global.currentAnim = "run"
 				$AnimatedSprite.speed_scale = 2.5
 			if crouch == true:
 				$AnimatedSprite.animation = "CrouchWalking"
+				Global.currentAnim = "crouchWalking"
 				$AnimatedSprite.speed_scale = 2.5
 
 		moving = true
@@ -138,6 +146,7 @@ func _physics_process(delta):
 			if attaque == false:
 				jumping = true
 				$AnimatedSprite.animation = "jump"
+				Global.currentAnim = "jump"
 				$CollisionShape2D2.disabled = false
 				$Area2DPlafond/CollisionShape2D.disabled = true
 	
@@ -147,12 +156,15 @@ func _physics_process(delta):
 	if moving == false and attaque == false:
 		if crouch == true:
 			$AnimatedSprite.animation = "crouch"
+			Global.currentAnim = "crouch"
 		else:
 			$AnimatedSprite.animation = "iddle"
+			Global.currentAnim = "iddle"
 			$AnimatedSprite.speed_scale = 1.25
 	#code qui sert à jouer l'animation de saut si aucune autre animation plus importante joue
 	if jumping == true and attaque == false:
 		$AnimatedSprite.animation = "jump"
+		Global.currentAnim = "jump"
 		yield(get_tree().create_timer(0.2), "timeout")
 		jumping = false
 		
