@@ -16,11 +16,9 @@ position = Vector2( 1, 0 )
 position = Vector2( 481, 264 )
 
 [node name="pasGentil" parent="." instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 447, 248 )
 
 [node name="Node2D2" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [node name="cochonAttaque" parent="." instance=ExtResource( 5 )]
 position = Vector2( 967, 400 )

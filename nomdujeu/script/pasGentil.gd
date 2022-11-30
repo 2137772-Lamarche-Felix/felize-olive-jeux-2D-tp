@@ -23,7 +23,7 @@ func cochonAttaque():
 		Global._degat = true
 		yield(get_tree().create_timer(0.2), "timeout")
 		attaque = false
-		$Area_attaque/CollisionShape2D.disabled = true
+		$Area_attaque/Collision_attaque.disabled = true
 		$cooldownAttaque.start(1)	
 
 
