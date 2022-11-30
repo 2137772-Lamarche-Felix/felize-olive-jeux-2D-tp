@@ -117,32 +117,33 @@ script = ExtResource( 7 )
 [node name="A_LEFT" type="AnimatedSprite" parent="PROMPTS"]
 position = Vector2( 72, 224 )
 frames = SubResource( 3 )
+frame = 1
 speed_scale = 0.25
 playing = true
 
 [node name="SPACE" type="AnimatedSprite" parent="PROMPTS"]
 position = Vector2( 440, 224 )
 frames = SubResource( 6 )
+frame = 1
 speed_scale = 0.25
 playing = true
 
 [node name="S_DOWN" type="AnimatedSprite" parent="PROMPTS"]
 position = Vector2( 552, 216 )
 frames = SubResource( 9 )
+frame = 1
 speed_scale = 0.25
 playing = true
 
 [node name="W_UP" type="AnimatedSprite" parent="PROMPTS"]
 position = Vector2( 240, 248 )
 frames = SubResource( 12 )
-frame = 1
 speed_scale = 0.25
 playing = true
 
 [node name="D_RIGHT" type="AnimatedSprite" parent="PROMPTS"]
 position = Vector2( 112, 224 )
 frames = SubResource( 15 )
-frame = 1
 speed_scale = 0.25
 playing = true
 

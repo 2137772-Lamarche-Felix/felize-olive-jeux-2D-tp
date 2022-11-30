@@ -25,13 +25,13 @@ var temps = 0
 #ça sert juste à savoir comment faire bouger le joueur selon sa position initial
 var move = Vector2()
 
-var bodyEntered = false
+var roofBodyEntered = false
 
 func _on_Area2D_body_entered(body):
-	bodyEntered = true
+	roofBodyEntered = true
 	
 func _on_Area2D_body_exited(body):
-	bodyEntered = false
+	roofBodyEntered = false
 	
 #func _on_Area2DEpe_body_entered(body):
 	#if body.is_in_group("ennemie"):
@@ -57,7 +57,7 @@ func _process(delta):
 			speed = 100
 			$AnimatedSprite.animation="WalkToCrouch"
 			Global.currentAnim = "walkToCrouch"
-		elif bodyEntered == false and crouch == true:
+		elif roofBodyEntered == false and crouch == true:
 			crouch = false
 			speed = 200
 			$Area2DPlafond/CollisionShape2D.disabled = true
@@ -146,8 +146,8 @@ func _physics_process(delta):
 	move.y += delta * gravity
 	
 	#code qui gere la touche fleche de haut (mouvement + animation)
-	if Input.is_action_just_pressed("ui_up") and is_on_floor() and Global._degat == false:
-		if bodyEntered == false:
+	if Input.is_action_just_pressed("ui_up") and is_on_floor() and Global._degat == false and Global.bodyEntered == false:
+		if roofBodyEntered == false:
 			move.y += -jump
 			crouch = false
 			speed = 200

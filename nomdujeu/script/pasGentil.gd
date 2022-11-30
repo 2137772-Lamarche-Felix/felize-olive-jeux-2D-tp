@@ -17,7 +17,6 @@ var current = false
 
 var _range = false
 
-
 func cochonAttaque():
 		$AnimatedSprite.animation = "attaque"
 		$AnimatedSprite.speed_scale = 1.5
@@ -79,4 +78,4 @@ func _on_Area_attaque_body_exited(body):
 	_range = false
 	
 func _on_cooldownAttaque_timeout():
-	$Area_attaque/CollisionShape2D.disabled = false
+	$Area_attaque/Collision_attaque.disabled = false

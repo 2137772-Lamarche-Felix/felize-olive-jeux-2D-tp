@@ -6,7 +6,7 @@
 [ext_resource path="res://script/chevalierMove.gd" type="Script" id=4]
 [ext_resource path="res://assets/textures/chevalier/_Fall.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/chevalier/_Jump.png" type="Texture" id=6]
-[ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/misc/GUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/textures/chevalier/_CrouchWalk.png" type="Texture" id=8]
 [ext_resource path="res://assets/textures/chevalier/_CrouchFull.png" type="Texture" id=9]
 [ext_resource path="res://assets/textures/chevalier/attaque/_AttackNoMovement.png" type="Texture" id=10]
@@ -390,7 +390,7 @@ shape = SubResource( 42 )
 position = Vector2( 5, -1 )
 frames = SubResource( 22 )
 animation = "death"
-frame = 3
+frame = 5
 speed_scale = 2.0
 playing = true
 
@@ -424,6 +424,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [connection signal="body_entered" from="KinematicBody2D/Area2DEpeDroite" to="KinematicBody2D" method="_on_Area2DEpe_body_entered"]
 [connection signal="body_entered" from="KinematicBody2D/Area2DEpeDroite" to="KinematicBody2D/Area2DEpeDroite" method="_on_Area2DEpe_body_entered"]

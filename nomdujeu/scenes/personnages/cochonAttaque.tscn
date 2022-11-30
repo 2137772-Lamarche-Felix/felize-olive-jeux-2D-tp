@@ -164,6 +164,7 @@ position = Vector2( -4, -12 )
 scale = Vector2( 1.54412, 1.53571 )
 frames = SubResource( 13 )
 animation = "attaque"
+frame = 3
 speed_scale = 1.5
 playing = true
 
@@ -181,7 +182,7 @@ shape = SubResource( 26 )
 
 [node name="Area_attaque" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_attaque"]
+[node name="Collision_attaque" type="CollisionShape2D" parent="Area_attaque"]
 position = Vector2( 0, -3 )
 rotation = 1.5708
 shape = SubResource( 27 )

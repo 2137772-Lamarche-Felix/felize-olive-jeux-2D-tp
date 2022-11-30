@@ -7,6 +7,10 @@ var _degat = false
 
 var currentAnim = "iddle"
 
+var nextScene = ""
+
+var bodyEntered = false
+
 func update_poele(delta):
 	poele+=delta
 #func _process(delta):
