@@ -15,12 +15,15 @@ var attaque = false
 
 var current = false
 
+var _range = false
+
 
 func cochonAttaque():
 		$AnimatedSprite.animation = "attaque"
 		$AnimatedSprite.speed_scale = 1.5
 		yield(get_tree().create_timer(0.4), "timeout")
-		Global._degat = true
+		if hit == false and _range == true:
+		  Global._degat = true
 		yield(get_tree().create_timer(0.2), "timeout")
 		attaque = false
 		$Area_attaque/Collision_attaque.disabled = true
@@ -36,7 +39,7 @@ func _process(delta):
 	move.y += delta * gravity
 	move = move_and_slide(move,Vector2.UP)
 	
-	if attaque == true:
+	if attaque == true and Global._attaque == false:
 		cochonAttaque()
 	
 	if Global._attaque == true and current == true:
@@ -69,9 +72,11 @@ func _on_detectDroite_body_entered(body):
 func _on_Area_attaque_body_entered(body):
 	if body.is_in_group("chevalier"):
 		attaque = true
+		_range = true
 
 func _on_Area_attaque_body_exited(body):
 	attaque = false
+	_range = false
 	
 func _on_cooldownAttaque_timeout():
 	$Area_attaque/CollisionShape2D.disabled = false

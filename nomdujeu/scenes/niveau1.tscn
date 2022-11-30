@@ -270,7 +270,7 @@ extents = Vector2( 124.5, 14.75 )
 extents = Vector2( 112, 78.25 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 132, 36 )
+extents = Vector2( 116, 36 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 159.25, 50.5 )
@@ -282,7 +282,7 @@ extents = Vector2( 13, 72 )
 extents = Vector2( 415.5, 24 )
 
 [sub_resource type="RectangleShape2D" id=16]
-extents = Vector2( 28, 1.5 )
+extents = Vector2( 32, 1.5 )
 
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 15.5, 1.5 )
@@ -322,7 +322,7 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 show_collision = true
 collision_use_kinematic = true
 format = 1
-tile_data = PoolIntArray( 2228260, 9, 0, 2228261, 9, 1, 2228262, 9, 1, 2228263, 9, 1, 2228264, 9, 1, 2228265, 9, 1, 2228266, 9, 3, 2949144, 9, 0, 2949145, 9, 1, 2949146, 9, 1, 2949147, 9, 3 )
+tile_data = PoolIntArray( 2228259, 9, 0, 2228260, 9, 1, 2228261, 9, 1, 2228262, 9, 1, 2228263, 9, 1, 2228264, 9, 1, 2228265, 9, 1, 2228266, 9, 3, 2949144, 9, 0, 2949145, 9, 1, 2949146, 9, 1, 2949147, 9, 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -339,7 +339,7 @@ position = Vector2( 496, 366.25 )
 shape = SubResource( 5 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 612, 292 )
+position = Vector2( 628, 292 )
 shape = SubResource( 6 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
@@ -355,7 +355,7 @@ position = Vector2( 420.5, 168 )
 shape = SubResource( 15 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 316, 274.5 )
+position = Vector2( 312, 274.5 )
 shape = SubResource( 16 )
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]

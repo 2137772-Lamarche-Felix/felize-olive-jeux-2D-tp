@@ -13,5 +13,8 @@ func update_poele(delta):
 var debug = false
 
 
+func _ready():
+	Engine.set_target_fps(60)
+
 func timer(var temps):
 	yield(get_tree().create_timer(temps), "timeout")
