@@ -158,8 +158,9 @@ func _physics_process(delta):
 				Global.currentAnim = "jump"
 				$CollisionShape2D2.disabled = false
 				$Area2DPlafond/CollisionShape2D.disabled = true
-	if Input.is_action_just_pressed("action_lancer"):
+	if Input.is_action_just_pressed("action_lancer") and Global.poele > 0:
 		lancer_poele($AnimatedSprite.flip_h)
+		Global.poele = Global.poele - 1
 	
 	#code qui sert juste à jouer l'animation de iddle si aucune autre
 	#animation plus importante joue actuellement
@@ -177,6 +178,11 @@ func _physics_process(delta):
 		Global.currentAnim = "jump"
 		yield(get_tree().create_timer(0.2), "timeout")
 		jumping = false
+
+
+
+
+
 func lancer_poele(poele_direction: bool):
 	if Poele:
 		var poele = Poele.instance()
@@ -184,8 +190,10 @@ func lancer_poele(poele_direction: bool):
 		if poele_direction:
 			poele.global_position = $Positiongauche.global_position
 			poele.direction = Vector2.LEFT.rotated(rotation)
+			poele.cotePoele(poele_direction)
 		else:
 			poele.global_position = $Positiondroite.global_position
 			poele.direction = Vector2.RIGHT.rotated(rotation)
+			poele.cotePoele(poele_direction)
 			
 		
