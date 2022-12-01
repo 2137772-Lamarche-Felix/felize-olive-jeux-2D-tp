@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/textures/terrain/Terrain (32x32).png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/terrain/decoration/Decorations (32x32).png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/terrain/decoration/castle_tileset_part2.png" type="Texture" id=3]
+[ext_resource path="res://script/Niveau2.gd" type="Script" id=4]
 
 [sub_resource type="TileSet" id=1]
 1/name = "Terrain (32x32).png 1"
@@ -334,6 +335,7 @@ extents = Vector2( 120.75, 27.5 )
 extents = Vector2( 15.5, 5.5 )
 
 [node name="Niveau2" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="terrain" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -413,18 +415,6 @@ shape = SubResource( 16 )
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 725, 587 )
 shape = SubResource( 17 )
-
-[node name="Pic#3" type="CollisionShape2D" parent="StaticBody2D" groups=["pic"]]
-position = Vector2( 721.5, 569.5 )
-shape = SubResource( 18 )
-
-[node name="Pic#2" type="CollisionShape2D" parent="StaticBody2D" groups=["pic"]]
-position = Vector2( 431, 408.5 )
-shape = SubResource( 19 )
-
-[node name="Pic#1" type="CollisionShape2D" parent="StaticBody2D" groups=["pic"]]
-position = Vector2( 127, 281 )
-shape = SubResource( 20 )
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 304, 518 )

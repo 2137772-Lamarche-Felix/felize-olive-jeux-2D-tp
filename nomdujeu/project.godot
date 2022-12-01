@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="kaamelott"
-run/main_scene="res://assets/niveau_1/MainNiveau1.tscn"
+run/main_scene="res://scenes/niveaux/niveau_1/MainNiveau1.tscn"
 config/icon="res://icon.png"
 
 [autoload]

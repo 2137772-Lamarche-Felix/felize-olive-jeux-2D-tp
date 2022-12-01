@@ -50,9 +50,10 @@ func _process(delta):
 		current = false
 	if hit == true:
 		$AnimatedSprite.animation = "hit"
-		yield(get_tree().create_timer(0.5), "timeout")
-		$AnimatedSprite.animation = "dead"
+		yield(get_tree().create_timer(0.2), "timeout")
 		$CollisionShape2D.disabled = true
+		yield(get_tree().create_timer(0.3), "timeout")
+		$AnimatedSprite.animation = "dead"
 		
 
 
