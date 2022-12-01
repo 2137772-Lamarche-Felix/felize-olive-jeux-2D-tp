@@ -16,6 +16,8 @@ func update_poele(delta):
 #func _process(delta):
 var debug = false
 
+var vieJoueur = 3
+
 
 func _ready():
 	Engine.set_target_fps(60)

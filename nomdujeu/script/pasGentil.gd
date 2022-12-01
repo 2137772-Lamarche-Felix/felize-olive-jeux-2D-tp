@@ -24,9 +24,11 @@ func cochonAttaque():
 		if hit == false and _range == true:
 		  Global._degat = true
 		yield(get_tree().create_timer(0.2), "timeout")
+		if attaque == true:
+			Global.vieJoueur-=1
 		attaque = false
 		$Area_attaque/Collision_attaque.disabled = true
-		$cooldownAttaque.start(1)	
+		$cooldownAttaque.start(4)	
 
 
 func _process(delta):

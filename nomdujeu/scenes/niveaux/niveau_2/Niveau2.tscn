@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/textures/terrain/Terrain (32x32).png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/terrain/decoration/Decorations (32x32).png" type="Texture" id=2]
@@ -317,15 +317,6 @@ extents = Vector2( 16.5, 94.5 )
 
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 278.5, 10 )
-
-[sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 272.5, 6.5 )
-
-[sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 16, 7.5 )
-
-[sub_resource type="RectangleShape2D" id=20]
-extents = Vector2( 95.5, 7 )
 
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 14.5078, 5.65918 )

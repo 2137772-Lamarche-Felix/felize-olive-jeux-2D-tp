@@ -2,4 +2,4 @@ extends Label
 
 
 func _process(delta: float) -> void:
-	$".".text="attaqueCochon: "+str(Global.nextScene)
+	$".".text="vie: "+str(Global.vieJoueur)

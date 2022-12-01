@@ -26,6 +26,10 @@ var temps = 0
 #ça sert juste à savoir comment faire bouger le joueur selon sa position initial
 var move = Vector2()
 
+var hang = false
+
+var slide = false
+
 var roofBodyEntered = false
 
 func _on_Area2D_body_entered(body):
@@ -34,6 +38,8 @@ func _on_Area2D_body_entered(body):
 func _on_Area2D_body_exited(body):
 	roofBodyEntered = false
 	
+
+	
 #func _on_Area2DEpe_body_entered(body):
 	#if body.is_in_group("ennemie"):
 		#Global._attaque = true
@@ -41,18 +47,39 @@ func _on_Area2D_body_exited(body):
 #fonction qui prend les données de move et de delta pour ensuite faire bouger
 #le joueur comme il l'a demandé
 func _process(delta):
+	
+	#en cours de prog (wallslide + walljump)
+	#if $wallUp1.is_colliding() and $wallDown2.is_colliding() and !is_on_floor():
+	#	slide = true
+	#	$AnimatedSprite.animation = "wallSlide"
+	#	gravity = 5000
+	#	if regardeDroite == false:
+	#		$AnimatedSprite.flip_h = false
+	#	if regardeDroite == true:
+	#		$AnimatedSprite.flip_h = true
+	#	if !Input.is_action_just_pressed("ui_up"):
+	#		move.y = delta*gravity
+	#	if Input.is_action_just_pressed("ui_up"):
+	#		move.y += delta*gravity
+	#else:
+	#	slide = false
+	#	gravity = 2000
+	#	move.y += delta*gravity
+	
+	move.y += delta*gravity
+			
+	
 	move = move_and_slide(move,Vector2.UP)
 	
 	if Global._degat == true:
 		$AnimatedSprite.animation="death"
 		$AnimatedSprite.speed_scale = 2
-		$CollisionShape2D.disabled = true
-		$CollisionShape2D2.disabled = true
+		remove_from_group("chevalier")
+		#Global.vieJoueur += -1
 		yield(get_tree().create_timer(1), "timeout")
 		$AnimatedSprite.animation="iddleDeath"
-		yield(get_tree().create_timer(2), "timeout")	
-		$CollisionShape2D.disabled = false
-		$CollisionShape2D2.disabled = false	
+		yield(get_tree().create_timer(2), "timeout")
+		add_to_group("chevalier")	
 		Global._degat = false
 	
 	#sert à determiner si le joueur doit être accroupis ou non
@@ -74,7 +101,7 @@ func _process(delta):
 	
 	#si le joueur tombe dans dans le vide, l'animation de chute va jouer
 	#jusqu'à ce que le joueur touche un sol		
-	if jumping == false and attaque == false and Global._degat == false:
+	if jumping == false and attaque == false and Global._degat == false and slide == false:
 		yield(get_tree().create_timer(0.02), "timeout")
 		if !is_on_floor():
 			$AnimatedSprite.animation = "fall"
@@ -116,6 +143,12 @@ func _physics_process(delta):
 	#code qui gere la touche de fleche de droite (movement + animations)	
 	if Input.is_action_pressed("ui_right") and Global._degat == false:
 		$AnimatedSprite.flip_h = false
+		$wallUp1.rotation_degrees = 180
+		$wallDown2.rotation_degrees = 90
+		if regardeDroite == false:
+			$AnimatedSprite.position.x =+ 5
+		if slide == true:
+			$AnimatedSprite.position.x =+ 0.25
 		regardeDroite = true
 		if attaque == false:
 			if crouch == false:
@@ -132,6 +165,12 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("ui_left") and Global._degat == false:
 		move.x = -speed
 		$AnimatedSprite.flip_h = true
+		$wallUp1.rotation_degrees = 0
+		$wallDown2.rotation_degrees = 270
+		if regardeDroite == false:
+			$AnimatedSprite.position.x =+ -5
+		if slide == true:
+			$AnimatedSprite.position.x =+ -0.25
 		regardeDroite = false
 		if attaque == false:
 			if crouch == false:
@@ -150,10 +189,10 @@ func _physics_process(delta):
 		move.x = lerp(move.x, 0, 1)
 		
 	#création de la gravité
-	move.y += delta * gravity
+	#move.y += delta * gravity
 	
 	#code qui gere la touche fleche de haut (mouvement + animation)
-	if Input.is_action_just_pressed("ui_up") and is_on_floor() and Global._degat == false and Global.bodyEntered == false:
+	if Input.is_action_just_pressed("ui_up") and (is_on_floor() or slide == true) and Global._degat == false and Global.bodyEntered == false:
 		if roofBodyEntered == false:
 			move.y += -jump
 			crouch = false
@@ -170,7 +209,7 @@ func _physics_process(delta):
 	
 	#code qui sert juste à jouer l'animation de iddle si aucune autre
 	#animation plus importante joue actuellement
-	if moving == false and attaque == false and Global._degat == false:
+	if moving == false and attaque == false and Global._degat == false and hang == false:
 		if crouch == true:
 			$AnimatedSprite.animation = "crouch"
 			Global.currentAnim = "crouch"

@@ -149,42 +149,47 @@ script = ExtResource( 9 )
 [node name="Vie count2" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -15.0
-margin_top = 67.0
-margin_right = -850.0
-margin_bottom = -492.0
+margin_left = -110.0
+margin_top = 62.0
+margin_right = -945.0
+margin_bottom = -497.0
 rect_scale = Vector2( 2, 2 )
 custom_fonts/font = SubResource( 1 )
-text = "Nombre de Poele :"
+text = "Poele :"
 align = 1
 valign = 1
 script = ExtResource( 8 )
 
 [node name="W" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 128, 452 )
 scale = Vector2( 1.75, 1.75 )
 frames = SubResource( 4 )
 animation = "unpressed"
 
 [node name="S" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 130, 511 )
 scale = Vector2( 1.875, 1.9375 )
 frames = SubResource( 7 )
 animation = "unpressed"
 
 [node name="A" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 64, 512 )
 scale = Vector2( 1.875, 1.875 )
 frames = SubResource( 10 )
 animation = "unpressed"
 
 [node name="D" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 194, 512 )
 scale = Vector2( 1.875, 1.9375 )
 frames = SubResource( 13 )
 animation = "unpressed"
 
 [node name="SPACE" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 128, 564 )
 scale = Vector2( 2.75, 1.25 )
 frames = SubResource( 16 )
