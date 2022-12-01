@@ -55,21 +55,21 @@ func _process(delta):
 
 
 func _on_detectGauche_body_entered(body):
-	if body.is_in_group("chevalier"):
+	if body.is_in_group("chevalier") or body.is_in_group("projectile"):
 		$AnimatedSprite.flip_h = false
 		regardeDroite = true
 		current = true
 
 
 func _on_detectDroite_body_entered(body):
-	if body.is_in_group("chevalier"):
+	if body.is_in_group("chevalier") or body.is_in_group("projectile"):
 		$AnimatedSprite.flip_h = true
 		regardeDroite = false
 		current = true
 
 
 func _on_Area_attaque_body_entered(body):
-	if body.is_in_group("chevalier"):
+	if body.is_in_group("chevalier") :
 		attaque = true
 		_range = true
 

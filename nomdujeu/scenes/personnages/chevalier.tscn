@@ -381,24 +381,36 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="KinematicBody2D" groups=["chevalier"]]
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 0, 6 )
 shape = SubResource( 42 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 position = Vector2( 5, -1 )
 frames = SubResource( 22 )
-animation = "death"
-frame = 5
+animation = "iddle"
+frame = 4
 speed_scale = 2.0
 playing = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_left = 0
 limit_bottom = 448
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Area2DEpeDroite" type="Area2D" parent="KinematicBody2D"]
 script = ExtResource( 12 )
@@ -422,6 +434,12 @@ disabled = true
 position = Vector2( 0, -15 )
 shape = SubResource( 43 )
 disabled = true
+
+[node name="Positiondroite" type="Position2D" parent="KinematicBody2D"]
+position = Vector2( 9, 5 )
+
+[node name="Positiongauche" type="Position2D" parent="KinematicBody2D"]
+position = Vector2( -8, 6 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 7 )]
 visible = false

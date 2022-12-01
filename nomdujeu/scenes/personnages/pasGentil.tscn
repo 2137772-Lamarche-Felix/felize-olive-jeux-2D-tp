@@ -167,6 +167,7 @@ position = Vector2( -4, -8 )
 scale = Vector2( 1.32353, 1.35714 )
 frames = SubResource( 12 )
 animation = "attaque"
+frame = 1
 speed_scale = 1.5
 playing = true
 

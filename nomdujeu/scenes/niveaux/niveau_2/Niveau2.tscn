@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/textures/terrain/Terrain (32x32).png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/terrain/decoration/Decorations (32x32).png" type="Texture" id=2]
@@ -327,9 +327,6 @@ extents = Vector2( 16, 7.5 )
 [sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 95.5, 7 )
 
-[sub_resource type="RectangleShape2D" id=21]
-extents = Vector2( 17, 20 )
-
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 14.5078, 5.65918 )
 
@@ -368,7 +365,7 @@ tile_data = PoolIntArray( 65546, 0, 0, 65550, 0, 0, 65587, 0, 0, 131073, 0, 0, 1
 tile_set = SubResource( 4 )
 cell_size = Vector2( 8, 8 )
 format = 1
-tile_data = PoolIntArray( 917585, 0, 3, 1048612, 1, 0, 1310812, 0, 3, 1310824, 0, 3, 1572887, 0, 3, 1704050, 0, 3, 2097180, 0, 0, 2097184, 0, 1, 2097188, 0, 2, 2359402, 0, 0, 2359406, 0, 1, 2359410, 0, 2, 2621468, 0, 3, 2883670, 0, 0, 2883672, 0, 1, 2883676, 0, 1, 2883678, 0, 2, 3145764, 0, 3, 3407928, 0, 3, 3604561, 0, 0, 3604565, 0, 2, 3670052, 0, 3, 3932224, 0, 0, 3932228, 0, 2, 4194340, 0, 3 )
+tile_data = PoolIntArray( 917585, 0, 3, 1048612, 1, 0, 1310812, 0, 3, 1310824, 0, 3, 1572887, 0, 3, 1704050, 0, 3, 2097180, 0, 0, 2097184, 0, 1, 2097188, 0, 2, 2359402, 0, 0, 2359406, 0, 1, 2359410, 0, 2, 2621468, 0, 3, 3014742, 0, 0, 3014746, 0, 1, 3014750, 0, 2, 3145764, 0, 3, 3407928, 0, 3, 3604561, 0, 0, 3604565, 0, 2, 3670052, 0, 3, 3932224, 0, 0, 3932228, 0, 2, 4194340, 0, 3 )
 
 [node name="Spike" type="TileMap" parent="."]
 tile_set = SubResource( 5 )
@@ -438,10 +435,6 @@ shape = SubResource( 19 )
 position = Vector2( 127, 281 )
 shape = SubResource( 20 )
 
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 667, 93 )
-shape = SubResource( 21 )
-
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 304, 518 )
 rotation = 0.000572443
@@ -467,7 +460,6 @@ shape = SubResource( 22 )
 [node name="CollisionShape2D37" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 664, 118 )
 rotation = 3.14064
-scale = Vector2( 1, 1 )
 shape = SubResource( 22 )
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="StaticBody2D"]
@@ -500,9 +492,8 @@ shape = SubResource( 23 )
 one_way_collision = true
 
 [node name="CollisionShape2D29" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 736, 358 )
+position = Vector2( 734, 373 )
 rotation = 6.05565e-05
-scale = Vector2( 1, 1 )
 shape = SubResource( 23 )
 one_way_collision = true
 
@@ -514,7 +505,6 @@ shape = SubResource( 23 )
 [node name="CollisionShape2D23" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 321.059, 131.509 )
 rotation = -3.12458
-scale = Vector2( 1, 1 )
 shape = SubResource( 24 )
 
 [node name="CollisionShape2D27" type="CollisionShape2D" parent="StaticBody2D"]

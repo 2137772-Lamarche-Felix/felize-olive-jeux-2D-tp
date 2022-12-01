@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+export(PackedScene) var Poele: PackedScene = preload("res://scenes/armes/poele_projectile.tscn")
 #gere la force de la gravité
 export var gravity = 2000
 #vitesse de marche du joueur
@@ -157,7 +158,8 @@ func _physics_process(delta):
 				Global.currentAnim = "jump"
 				$CollisionShape2D2.disabled = false
 				$Area2DPlafond/CollisionShape2D.disabled = true
-	
+	if Input.is_action_just_pressed("action_lancer"):
+		lancer_poele($AnimatedSprite.flip_h)
 	
 	#code qui sert juste à jouer l'animation de iddle si aucune autre
 	#animation plus importante joue actuellement
@@ -175,5 +177,15 @@ func _physics_process(delta):
 		Global.currentAnim = "jump"
 		yield(get_tree().create_timer(0.2), "timeout")
 		jumping = false
+func lancer_poele(poele_direction: bool):
+	if Poele:
+		var poele = Poele.instance()
+		get_tree().current_scene.add_child(poele)
+		if poele_direction:
+			poele.global_position = $Positiongauche.global_position
+			poele.direction = Vector2.LEFT.rotated(rotation)
+		else:
+			poele.global_position = $Positiondroite.global_position
+			poele.direction = Vector2.RIGHT.rotated(rotation)
+			
 		
-
