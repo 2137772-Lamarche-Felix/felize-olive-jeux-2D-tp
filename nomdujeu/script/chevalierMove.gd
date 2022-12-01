@@ -46,7 +46,13 @@ func _process(delta):
 	if Global._degat == true:
 		$AnimatedSprite.animation="death"
 		$AnimatedSprite.speed_scale = 2
+		$CollisionShape2D.disabled = true
+		$CollisionShape2D2.disabled = true
 		yield(get_tree().create_timer(1), "timeout")
+		$AnimatedSprite.animation="iddleDeath"
+		yield(get_tree().create_timer(2), "timeout")	
+		$CollisionShape2D.disabled = false
+		$CollisionShape2D2.disabled = false	
 		Global._degat = false
 	
 	#sert à determiner si le joueur doit être accroupis ou non
