@@ -30,6 +30,8 @@ var hang = false
 
 var slide = false
 
+var walljump = false
+
 var roofBodyEntered = false
 
 func _on_Area2D_body_entered(body):
@@ -47,24 +49,6 @@ func _on_Area2D_body_exited(body):
 #fonction qui prend les données de move et de delta pour ensuite faire bouger
 #le joueur comme il l'a demandé
 func _process(delta):
-	#en cours de prog (wallslide + walljump)
-	#if $wallUp1.is_colliding() and $wallDown2.is_colliding() and !is_on_floor():
-	#	slide = true
-	#	$AnimatedSprite.animation = "wallSlide"
-	#	gravity = 5000
-	#	if regardeDroite == false:
-	#		$AnimatedSprite.flip_h = false
-	#	if regardeDroite == true:
-	#		$AnimatedSprite.flip_h = true
-	#	if !Input.is_action_just_pressed("ui_up"):
-	#		move.y = delta*gravity
-	#	if Input.is_action_just_pressed("ui_up"):
-	#		move.y += delta*gravity
-	#else:
-	#	slide = false
-	#	gravity = 2000
-	#	move.y += delta*gravity
-	Global.positionChevalier = get_position()
 	
 	move.y += delta*gravity
 			
@@ -140,48 +124,48 @@ func _physics_process(delta):
 	moving = false
 	
 	#code qui gere la touche de fleche de droite (movement + animations)	
-	if Input.is_action_pressed("ui_right") and Global._degat == false:
-		$AnimatedSprite.flip_h = false
-		$wallUp1.rotation_degrees = 180
-		$wallDown2.rotation_degrees = 90
-		if regardeDroite == false:
-			$AnimatedSprite.position.x =+ 5
-		if slide == true:
-			$AnimatedSprite.position.x =+ 0.25
-		regardeDroite = true
-		if attaque == false:
-			if crouch == false:
-				$AnimatedSprite.animation = "run"
-				Global.currentAnim = "run"
-				$AnimatedSprite.speed_scale = 2.5
-			elif crouch ==true:
-				$AnimatedSprite.animation = "CrouchWalking"
-				Global.currentAnim = "crouchWalking"
-				$AnimatedSprite.speed_scale = 2.5
-		moving = true
-		move.x = speed
+	if (Input.is_action_pressed("ui_right") and Global._degat == false):
+			$AnimatedSprite.flip_h = false
+			$wallUp1.rotation_degrees = 180
+			$wallDown2.rotation_degrees = 90
+			if regardeDroite == false:
+				$AnimatedSprite.position.x =+ 5
+			if slide == true:
+				$AnimatedSprite.position.x =+ 0.25
+			regardeDroite = true
+			if attaque == false:
+				if crouch == false:
+					$AnimatedSprite.animation = "run"
+					Global.currentAnim = "run"
+					$AnimatedSprite.speed_scale = 2.5
+				elif crouch ==true:
+					$AnimatedSprite.animation = "CrouchWalking"
+					Global.currentAnim = "crouchWalking"
+					$AnimatedSprite.speed_scale = 2.5
+			moving = true
+			move.x = speed
 	#code qui gere la touche de fleche de gauche (movement + animations)
-	elif Input.is_action_pressed("ui_left") and Global._degat == false:
-		move.x = -speed
-		$AnimatedSprite.flip_h = true
-		$wallUp1.rotation_degrees = 0
-		$wallDown2.rotation_degrees = 270
-		if regardeDroite == false:
-			$AnimatedSprite.position.x =+ -5
-		if slide == true:
-			$AnimatedSprite.position.x =+ -0.25
-		regardeDroite = false
-		if attaque == false:
-			if crouch == false:
-				$AnimatedSprite.animation = "run"
-				Global.currentAnim = "run"
-				$AnimatedSprite.speed_scale = 2.5
-			if crouch == true:
-				$AnimatedSprite.animation = "CrouchWalking"
-				Global.currentAnim = "crouchWalking"
-				$AnimatedSprite.speed_scale = 2.5
+	elif (Input.is_action_pressed("ui_left") and Global._degat == false):
+			$AnimatedSprite.flip_h = true
+			$wallUp1.rotation_degrees = 0
+			$wallDown2.rotation_degrees = 270
+			if regardeDroite == false:
+				$AnimatedSprite.position.x =+ -5
+			if slide == true:
+				$AnimatedSprite.position.x =+ -0.25
+			regardeDroite = false
+			if attaque == false:
+				if crouch == false:
+					$AnimatedSprite.animation = "run"
+					Global.currentAnim = "run"
+					$AnimatedSprite.speed_scale = 2.5
+				if crouch == true:
+					$AnimatedSprite.animation = "CrouchWalking"
+					Global.currentAnim = "crouchWalking"
+					$AnimatedSprite.speed_scale = 2.5
 
-		moving = true
+			moving = true
+			move.x = -speed
 	#ça sert à rendre smooth l'arrête d'animation mais finalement sans ça
 	#le joueur glisse à l'infini
 	else: 
@@ -239,5 +223,3 @@ func lancer_poele(poele_direction: bool):
 			poele.global_position = $Positiondroite.global_position
 			poele.direction = Vector2.RIGHT.rotated(rotation)
 			poele.cotePoele(poele_direction)
-			
-		

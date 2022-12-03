@@ -485,7 +485,7 @@ position = Vector2( -4.76837e-07, 16 )
 rotation = -1.58879
 scale = Vector2( 0.5, 0.5 )
 enabled = true
-cast_to = Vector2( 0.611753, -33.9945 )
+cast_to = Vector2( 0.467812, -25.9958 )
 
 [node name="wallDown1" type="RayCast2D" parent="KinematicBody2D"]
 position = Vector2( 4, 10 )
@@ -504,7 +504,9 @@ cast_to = Vector2( 36, 0 )
 position = Vector2( 0, -23 )
 scale = Vector2( 0.25, 0.5 )
 enabled = true
-cast_to = Vector2( -68, 0 )
+cast_to = Vector2( -48, 0 )
+
+[node name="walljumpTimer" type="Timer" parent="KinematicBody2D"]
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 7 )]
 
@@ -513,3 +515,4 @@ cast_to = Vector2( -68, 0 )
 [connection signal="body_entered" from="KinematicBody2D/Area2DEpeGauche" to="KinematicBody2D/Area2DEpeGauche" method="_on_Area2DEpeGauche_body_entered"]
 [connection signal="body_entered" from="KinematicBody2D/Area2DPlafond" to="KinematicBody2D" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="KinematicBody2D/Area2DPlafond" to="KinematicBody2D" method="_on_Area2D_body_exited"]
+[connection signal="timeout" from="KinematicBody2D/walljumpTimer" to="KinematicBody2D" method="_on_walljumpTimer_timeout"]
