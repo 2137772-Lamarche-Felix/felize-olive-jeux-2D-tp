@@ -1,7 +1,8 @@
 extends Area2D
 
 var _attaque = false
-var poele = 0
+var poele = 1
+
 
 var _degat = false
 
@@ -18,9 +19,16 @@ var debug = false
 
 var vieJoueur = 3
 
-
+var positionChevalier = 0
+var positionSpawn = 0
 func _ready():
 	Engine.set_target_fps(60)
 
 func timer(var temps):
 	yield(get_tree().create_timer(temps), "timeout")
+
+func update_vie(delta):
+	vieJoueur-=delta
+	if vieJoueur <= 0:
+		get_tree().change_scene("res://Assets/Scenes/game_over.tscn")
+	

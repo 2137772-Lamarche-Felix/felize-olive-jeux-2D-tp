@@ -47,7 +47,6 @@ func _on_Area2D_body_exited(body):
 #fonction qui prend les données de move et de delta pour ensuite faire bouger
 #le joueur comme il l'a demandé
 func _process(delta):
-	
 	#en cours de prog (wallslide + walljump)
 	#if $wallUp1.is_colliding() and $wallDown2.is_colliding() and !is_on_floor():
 	#	slide = true
@@ -65,23 +64,23 @@ func _process(delta):
 	#	slide = false
 	#	gravity = 2000
 	#	move.y += delta*gravity
+	Global.positionChevalier = get_position()
 	
 	move.y += delta*gravity
 			
 	
 	move = move_and_slide(move,Vector2.UP)
 	
-	if Global._degat == true:
+	if (Global.vieJoueur == 2 or Global.vieJoueur == 1)and Global._degat == true:
 		$AnimatedSprite.animation="death"
 		$AnimatedSprite.speed_scale = 2
 		remove_from_group("chevalier")
 		#Global.vieJoueur += -1
 		yield(get_tree().create_timer(1), "timeout")
 		$AnimatedSprite.animation="iddleDeath"
-		yield(get_tree().create_timer(2), "timeout")
 		add_to_group("chevalier")	
 		Global._degat = false
-	
+		set_global_position(Vector2(Global.positionSpawn))
 	#sert à determiner si le joueur doit être accroupis ou non
 	if Input.is_action_just_pressed("ui_down") and Global._degat == false:
 		if crouch == false:

@@ -1,5 +1,4 @@
 extends KinematicBody2D
-
 #gere la force de la gravité
 export var gravity = 2000
 
@@ -25,7 +24,7 @@ func cochonAttaque():
 		  Global._degat = true
 		yield(get_tree().create_timer(0.2), "timeout")
 		if attaque == true:
-			Global.vieJoueur-=1
+			Global.update_vie(1)
 		attaque = false
 		$Area_attaque/Collision_attaque.disabled = true
 		$cooldownAttaque.start(4)	
