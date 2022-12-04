@@ -30,5 +30,5 @@ func timer(var temps):
 func update_vie(delta):
 	vieJoueur-=delta
 	if vieJoueur <= 0:
-		get_tree().change_scene("res://Assets/Scenes/game_over.tscn")
+		get_tree().change_scene("res://scenes/niveaux/Gameover.tscn")
 	

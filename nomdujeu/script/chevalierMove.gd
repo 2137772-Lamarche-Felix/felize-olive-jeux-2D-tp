@@ -186,6 +186,12 @@ func _physics_process(delta):
 				Global.currentAnim = "jump"
 				$CollisionShape2D2.disabled = false
 				$Area2DPlafond/CollisionShape2D.disabled = true
+
+
+
+
+
+
 	if Input.is_action_just_pressed("action_lancer") and Global.poele > 0:
 		lancer_poele($AnimatedSprite.flip_h)
 		Global.poele = Global.poele - 1
