@@ -26,11 +26,12 @@ var temps = 0
 #ça sert juste à savoir comment faire bouger le joueur selon sa position initial
 var move = Vector2()
 
-var hang = false
+var canJump = false
 
-var slide = false
+var canwallJump = false
 
-var walljump = false
+var wallJumpX = 0
+var wallJumpY = 0
 
 var roofBodyEntered = false
 
@@ -55,7 +56,8 @@ func _process(delta):
 	
 	move = move_and_slide(move,Vector2.UP)
 	
-	if (Global.vieJoueur == 2 or Global.vieJoueur == 1)and Global._degat == true:
+	#if (Global.vieJoueur == 2 or Global.vieJoueur == 1)and 
+	if Global._degat == true:
 		$AnimatedSprite.animation="death"
 		$AnimatedSprite.speed_scale = 2
 		remove_from_group("chevalier")
@@ -84,7 +86,7 @@ func _process(delta):
 	
 	#si le joueur tombe dans dans le vide, l'animation de chute va jouer
 	#jusqu'à ce que le joueur touche un sol		
-	if jumping == false and attaque == false and Global._degat == false and slide == false:
+	if jumping == false and attaque == false and Global._degat == false:
 		yield(get_tree().create_timer(0.02), "timeout")
 		if !is_on_floor():
 			$AnimatedSprite.animation = "fall"
@@ -130,8 +132,8 @@ func _physics_process(delta):
 			$wallDown2.rotation_degrees = 90
 			if regardeDroite == false:
 				$AnimatedSprite.position.x =+ 5
-			if slide == true:
-				$AnimatedSprite.position.x =+ 0.25
+			#if slide == true:
+			#	$AnimatedSprite.position.x =+ 0.25
 			regardeDroite = true
 			if attaque == false:
 				if crouch == false:
@@ -151,8 +153,8 @@ func _physics_process(delta):
 			$wallDown2.rotation_degrees = 270
 			if regardeDroite == false:
 				$AnimatedSprite.position.x =+ -5
-			if slide == true:
-				$AnimatedSprite.position.x =+ -0.25
+			#if slide == true:
+			#	$AnimatedSprite.position.x =+ -0.25
 			regardeDroite = false
 			if attaque == false:
 				if crouch == false:
@@ -175,18 +177,26 @@ func _physics_process(delta):
 	#move.y += delta * gravity
 	
 	#code qui gere la touche fleche de haut (mouvement + animation)
-	if Input.is_action_just_pressed("ui_up") and (is_on_floor() or slide == true) and Global._degat == false and Global.bodyEntered == false:
-		if roofBodyEntered == false:
+	if Input.is_action_just_pressed("ui_up") and Global._degat == false and Global.bodyEnteredPorte == false:
+		var animJump = false
+		if roofBodyEntered == false and is_on_floor():
+			canJump = true
+			animJump = true		
+		else:
+			canJump = false
+			
+			
+		if canJump == true:
 			move.y += -jump
 			crouch = false
 			speed = 200
-			if attaque == false:
-				jumping = true
-				$AnimatedSprite.animation = "jump"
-				Global.currentAnim = "jump"
-				$CollisionShape2D2.disabled = false
-				$Area2DPlafond/CollisionShape2D.disabled = true
-
+			
+		if attaque == false and animJump == true:
+			jumping = true
+			$AnimatedSprite.animation = "jump"
+			Global.currentAnim = "jump"
+			$CollisionShape2D2.disabled = false
+			$Area2DPlafond/CollisionShape2D.disabled = true
 
 
 
@@ -198,7 +208,7 @@ func _physics_process(delta):
 	
 	#code qui sert juste à jouer l'animation de iddle si aucune autre
 	#animation plus importante joue actuellement
-	if moving == false and attaque == false and Global._degat == false and hang == false:
+	if moving == false and attaque == false and Global._degat == false:
 		if crouch == true:
 			$AnimatedSprite.animation = "crouch"
 			Global.currentAnim = "crouch"
@@ -229,3 +239,13 @@ func lancer_poele(poele_direction: bool):
 			poele.global_position = $Positiondroite.global_position
 			poele.direction = Vector2.RIGHT.rotated(rotation)
 			poele.cotePoele(poele_direction)
+			
+	
+func nextTowall():
+	return nextToRightwall() or nextToLeftwall()
+	
+func nextToRightwall():
+	return $wallDown2.is_colliding()
+	
+func nextToLeftwall():	
+	return $wallDown2.is_colliding()

@@ -81,3 +81,11 @@ func _on_Area_attaque_body_exited(body):
 	
 func _on_cooldownAttaque_timeout():
 	$Area_attaque/Collision_attaque.disabled = false
+
+
+func _on_detectDroite_body_exited(body):
+	current = false
+	
+
+func _on_detectGauche_body_exited(body):
+	current = false

@@ -1,9 +1,41 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/textures/pasGentil/cochonTireur/Idle (26x30).png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/pasGentil/cochonTireur/Run (26x30).png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/pasGentil/cochonTireur/Throwing Box (26x30).png" type="Texture" id=3]
 [ext_resource path="res://script/cochonTireur.gd" type="Script" id=4]
+[ext_resource path="res://assets/textures/pasGentil/cochon/Hit (34x28).png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/pasGentil/cochon/Dead (34x28).png" type="Texture" id=6]
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 34, 28 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 34, 0, 34, 28 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 68, 0, 34, 28 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 102, 0, 34, 28 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 34, 28 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 34, 0, 34, 28 )
 
 [sub_resource type="AtlasTexture" id=14]
 flags = 4
@@ -107,6 +139,16 @@ region = Rect2( 104, 0, 26, 30 )
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
+"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 40 ), SubResource( 41 ) ],
+"loop": true,
+"name": "hit",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "iddleBox",
@@ -126,32 +168,51 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.99756, 7.00278 )
 
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 35, 6 )
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 36, 6 )
+
 [node name="cochonTireur" type="KinematicBody2D" groups=["ennemie"]]
-rotation = 0.261799
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2.84217e-14, -1.42109e-14 )
-rotation = -0.233032
 frames = SubResource( 13 )
-animation = "throwing"
-frame = 3
+animation = "dead"
 playing = true
 offset = Vector2( -2, -7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.22293, 0.709754 )
-rotation = -0.262495
+position = Vector2( -2.38419e-07, -1 )
+rotation = -0.0420205
 shape = SubResource( 1 )
 
 [node name="PositionGauche" type="Position2D" parent="."]
-position = Vector2( -5.79556, 1.55291 )
+position = Vector2( -6, -7 )
 rotation = -0.26091
 
 [node name="PositionDroite" type="Position2D" parent="."]
-position = Vector2( 5.79556, -1.55291 )
+position = Vector2( 14, -7 )
 rotation = -0.264984
 
-[node name="Timer" type="Timer" parent="."]
+[node name="cooldown" type="Timer" parent="."]
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="detectGauche" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectGauche"]
+position = Vector2( -46, -3 )
+shape = SubResource( 34 )
+
+[node name="detectDroite" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectDroite"]
+position = Vector2( 46, -3 )
+shape = SubResource( 35 )
+
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="body_entered" from="detectGauche" to="." method="_on_detectGauche_body_entered"]
+[connection signal="body_exited" from="detectGauche" to="." method="_on_detectGauche_body_exited"]
+[connection signal="body_entered" from="detectDroite" to="." method="_on_detectDroite_body_entered"]
+[connection signal="body_exited" from="detectDroite" to="." method="_on_detectDroite_body_exited"]
