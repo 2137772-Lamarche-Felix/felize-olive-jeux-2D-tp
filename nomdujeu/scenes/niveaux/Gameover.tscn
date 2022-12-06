@@ -56,5 +56,5 @@ custom_fonts/font = SubResource( 3 )
 text = "Quitter"
 
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quitter" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quitter" to="." method="_on_Quitter_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quitter" to="." method="_on_Button2_pressed"]

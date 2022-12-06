@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets-CR09-02/textures/terrain/backgroundjeuxchateau.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/Font/ancient-modern-tales-font/misc/Ancient Modern Tales-0df8.woff" type="DynamicFontData" id=2]
+[ext_resource path="res://script/Ecran_victoire.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -15,6 +16,7 @@ font_data = ExtResource( 2 )
 [node name="Ecran_victoire" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 511.5, 300.5 )
@@ -55,3 +57,6 @@ margin_right = 246.0
 margin_bottom = 52.0
 custom_fonts/font = SubResource( 3 )
 text = "Quitter"
+
+[connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

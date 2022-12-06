@@ -10,7 +10,7 @@
 [node name="MainNiveau2" type="Node2D"]
 
 [node name="Niveau2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2, -167 )
+position = Vector2( 2, -164 )
 
 [node name="chevalier" parent="." instance=ExtResource( 2 )]
 position = Vector2( 63, 417 )
@@ -34,7 +34,7 @@ position = Vector2( 231, 272 )
 position = Vector2( 696, 259 )
 
 [node name="cochonAttaque2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 939, 24 )
+position = Vector2( 882, 13 )
 
 [node name="cochonAttaque3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 303, 77 )
@@ -46,4 +46,4 @@ position = Vector2( 403, -49 )
 position = Vector2( 666, -82 )
 
 [node name="cochonTireur3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 930, 111 )
+position = Vector2( 940, 259 )

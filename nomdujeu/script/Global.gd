@@ -35,5 +35,6 @@ func timer(var temps):
 func update_vie(vie):
 	vieJoueur-=vie
 	if vieJoueur <= 0:
+		yield(get_tree().create_timer(1), "timeout")
 		get_tree().change_scene("res://scenes/niveaux/Gameover.tscn")
 	
