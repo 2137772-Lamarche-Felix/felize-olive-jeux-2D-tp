@@ -167,7 +167,6 @@ position = Vector2( -4, -8 )
 scale = Vector2( 1.32353, 1.35714 )
 frames = SubResource( 12 )
 animation = "attaque"
-frame = 1
 speed_scale = 1.5
 playing = true
 
@@ -183,5 +182,9 @@ shape = SubResource( 26 )
 position = Vector2( 40, -4 )
 shape = SubResource( 27 )
 
+[connection signal="area_entered" from="KinematicBody2D/detectGauche" to="KinematicBody2D" method="_on_detectGauche_area_entered"]
+[connection signal="area_exited" from="KinematicBody2D/detectGauche" to="KinematicBody2D" method="_on_detectGauche_area_exited"]
 [connection signal="body_entered" from="KinematicBody2D/detectGauche" to="KinematicBody2D" method="_on_detectGauche_body_entered"]
+[connection signal="area_entered" from="KinematicBody2D/detectDroite" to="KinematicBody2D" method="_on_detectDroite_area_entered"]
+[connection signal="area_exited" from="KinematicBody2D/detectDroite" to="KinematicBody2D" method="_on_detectDroite_area_exited"]
 [connection signal="body_entered" from="KinematicBody2D/detectDroite" to="KinematicBody2D" method="_on_detectDroite_body_entered"]

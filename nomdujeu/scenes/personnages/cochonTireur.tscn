@@ -181,6 +181,7 @@ script = ExtResource( 4 )
 position = Vector2( 2.84217e-14, -1.42109e-14 )
 frames = SubResource( 13 )
 animation = "dead"
+frame = 3
 playing = true
 offset = Vector2( -2, -7 )
 

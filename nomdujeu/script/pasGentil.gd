@@ -31,7 +31,11 @@ func cochonAttaque():
 
 
 func _process(delta):
-	
+	var currentCochon = str($".")
+	if Global.currentEnnemie == currentCochon:
+		current = true
+	else:
+		current = false
 	
 	if hit == false and attaque == false:
 		$AnimatedSprite.animation = "iddle"
@@ -60,14 +64,12 @@ func _on_detectGauche_body_entered(body):
 	if body.is_in_group("chevalier") or body.is_in_group("projectile"):
 		$AnimatedSprite.flip_h = false
 		regardeDroite = true
-		current = true
 
 
 func _on_detectDroite_body_entered(body):
 	if body.is_in_group("chevalier") or body.is_in_group("projectile"):
 		$AnimatedSprite.flip_h = true
 		regardeDroite = false
-		current = true
 
 
 func _on_Area_attaque_body_entered(body):
@@ -83,9 +85,3 @@ func _on_cooldownAttaque_timeout():
 	$Area_attaque/Collision_attaque.disabled = false
 
 
-func _on_detectDroite_body_exited(body):
-	current = false
-	
-
-func _on_detectGauche_body_exited(body):
-	current = false

@@ -19,10 +19,10 @@ position = Vector2( 1, 0 )
 position = Vector2( 1245, 387 )
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 84, 297 )
+position = Vector2( 228, -92 )
 
 [node name="pasGentil" parent="." instance=ExtResource( 3 )]
-position = Vector2( 445, 265 )
+position = Vector2( 430, 265 )
 
 [node name="Node2D2" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -31,7 +31,7 @@ visible = false
 position = Vector2( 874, 395 )
 
 [node name="cochonAttaque" parent="." instance=ExtResource( 5 )]
-position = Vector2( 560, 241 )
+position = Vector2( 567, 243 )
 
 [node name="respawnNiveau1" parent="." instance=ExtResource( 8 )]
 position = Vector2( 68, 268 )

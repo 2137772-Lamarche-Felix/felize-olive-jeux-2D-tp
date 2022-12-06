@@ -17,8 +17,17 @@ var current = false
 
 var hit = false
 
+var droite = false
+
 
 func _process(delta):
+	
+	var currentCochon = str($".")
+	if Global.currentEnnemie == currentCochon:
+		current = true
+	else:
+		current = false
+	
 	if iddle == true:
 		$AnimatedSprite.animation = "iddleBox"
 		
@@ -48,11 +57,11 @@ func lancer_boite(boite_direction: bool):
 		var boite = Boite.instance()
 		get_tree().current_scene.add_child(boite)
 		#if boite_direction and Global.droite == true:
-		if Global.droite == true:
+		if droite == true:
 			boite.global_position = $PositionDroite.global_position
 			boite.direction = Vector2.RIGHT.rotated(rotation)
 			
-		elif Global.droite == false:
+		elif droite == false:
 			boite.global_position = $PositionGauche.global_position
 			boite.direction = Vector2.LEFT.rotated(rotation)
 		#iddle = true
@@ -64,16 +73,14 @@ func _on_detectGauche_body_entered(body):
 	if body.is_in_group("chevalier"):
 		peutLancer = true
 		lancer()
-		Global.droite = false
-		#current = true
+		droite = false
 
 
 func _on_detectDroite_body_entered(body):
 	if body.is_in_group("chevalier"):
 		peutLancer = true
 		lancer()
-		Global.droite = true
-		#current = true
+		droite = true
 
 func lancer():
 		iddle = false

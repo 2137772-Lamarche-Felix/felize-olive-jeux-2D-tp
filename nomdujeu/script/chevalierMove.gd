@@ -27,11 +27,13 @@ var temps = 0
 var move = Vector2()
 
 var canJump = false
-
 var canwallJump = false
+var wallJumpY = 600
+var moveX = false
+var rejumpGauche = false
+var rejumpDroite = false
 
-var wallJumpX = 0
-var wallJumpY = 0
+var slide = false
 
 var roofBodyEntered = false
 
@@ -50,11 +52,25 @@ func _on_Area2D_body_exited(body):
 #fonction qui prend les données de move et de delta pour ensuite faire bouger
 #le joueur comme il l'a demandé
 func _process(delta):
+	#sauter()
+	#if $wallUp1.is_colliding() and $wallDown2.is_colliding() and !is_on_floor():
+	#	slide = true
+	#	if !Input.is_action_just_pressed("ui_up"):
+	#		move.y -= wallJumpY
+	#		slide =false
+	#	if Input.is_action_just_pressed("ui_up"):
+	#		move.y -= wallJumpY
+	#		slide = false
+	#	$AnimatedSprite.animation = "wallSlide"
+	#	if move.y > 10 and slide == true:
+	#		move.y = 10
+	#	if regardeDroite == false:
+	#		$AnimatedSprite.flip_h = false
+	#	if regardeDroite == true:
+	#		$AnimatedSprite.flip_h = true
+	#else:
+	#	slide = false
 	
-	move.y += delta*gravity
-			
-	
-	move = move_and_slide(move,Vector2.UP)
 	
 	#if (Global.vieJoueur == 2 or Global.vieJoueur == 1)and 
 	if Global._degat == true:
@@ -122,11 +138,21 @@ func _process(delta):
 #fonction principal du mouvement du joueur
 func _physics_process(delta):
 	
+	#if moveX == true:
+	#	$walljumpTimer.start(0.1)
+	#	move.x = 200
+	
+	move.y += delta*gravity
+			
+	
+	move = move_and_slide(move,Vector2.UP)
+	
 	#par défaut la var moving doit être false
 	moving = false
 	
 	#code qui gere la touche de fleche de droite (movement + animations)	
 	if (Input.is_action_pressed("ui_right") and Global._degat == false):
+			Global.droite = true
 			$AnimatedSprite.flip_h = false
 			$wallUp1.rotation_degrees = 180
 			$wallDown2.rotation_degrees = 90
@@ -148,6 +174,7 @@ func _physics_process(delta):
 			move.x = speed
 	#code qui gere la touche de fleche de gauche (movement + animations)
 	elif (Input.is_action_pressed("ui_left") and Global._degat == false):
+			Global.droite = false
 			$AnimatedSprite.flip_h = true
 			$wallUp1.rotation_degrees = 0
 			$wallDown2.rotation_degrees = 270
@@ -177,26 +204,7 @@ func _physics_process(delta):
 	#move.y += delta * gravity
 	
 	#code qui gere la touche fleche de haut (mouvement + animation)
-	if Input.is_action_just_pressed("ui_up") and Global._degat == false and Global.bodyEnteredPorte == false:
-		var animJump = false
-		if roofBodyEntered == false and is_on_floor():
-			canJump = true
-			animJump = true		
-		else:
-			canJump = false
-			
-			
-		if canJump == true:
-			move.y += -jump
-			crouch = false
-			speed = 200
-			
-		if attaque == false and animJump == true:
-			jumping = true
-			$AnimatedSprite.animation = "jump"
-			Global.currentAnim = "jump"
-			$CollisionShape2D2.disabled = false
-			$Area2DPlafond/CollisionShape2D.disabled = true
+	sauter()
 
 
 
@@ -226,6 +234,39 @@ func _physics_process(delta):
 
 
 
+func sauter():
+	if Input.is_action_just_pressed("ui_up") and Global._degat == false and Global.bodyEnteredPorte == false:
+		var animJump = false
+		
+		if roofBodyEntered == false and is_on_floor():
+			canJump = true
+			animJump = true
+			canwallJump = true
+		else:
+			canJump = false
+			
+
+		if !is_on_floor() and nextToRightwall() and canwallJump == true:
+			move.y = -wallJumpY
+			moveX = true
+	
+		if !is_on_floor() and nextToLeftwall() and canwallJump == true:
+			move.y = -wallJumpY
+			moveX = true
+			
+			
+		if canJump == true:
+			move.y -= jump
+			crouch = false
+			canJump = false
+			
+		if attaque == false and animJump == true:
+			jumping = true
+			$AnimatedSprite.animation = "jump"
+			Global.currentAnim = "jump"
+			$CollisionShape2D2.disabled = false
+			$Area2DPlafond/CollisionShape2D.disabled = true
+	Global.debug = move.y
 
 func lancer_poele(poele_direction: bool):
 	if Poele:
@@ -249,3 +290,7 @@ func nextToRightwall():
 	
 func nextToLeftwall():	
 	return $wallDown2.is_colliding()
+
+
+func _on_walljumpTimer_timeout():
+	moveX = false
