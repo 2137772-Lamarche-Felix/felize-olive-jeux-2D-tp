@@ -32,8 +32,7 @@ var wallJumpY = 600
 var moveX = false
 var rejumpGauche = false
 var rejumpDroite = false
-
-var slide = false
+var sliding = false
 
 var roofBodyEntered = false
 
@@ -52,6 +51,25 @@ func _on_Area2D_body_exited(body):
 #fonction qui prend les données de move et de delta pour ensuite faire bouger
 #le joueur comme il l'a demandé
 func _process(delta):
+	
+	if nextTowall() == false:
+		sliding = false
+		canwallJump = true
+	if nextTowall() and !is_on_floor() and jumping == false:
+		sliding = true
+		if regardeDroite == true:
+			$AnimatedSprite.animation = "wallSlide"
+			$AnimatedSprite.flip_h = true
+			$AnimatedSprite.position.x = -1
+		elif regardeDroite == false:
+			$AnimatedSprite.animation = "wallSlide"
+			$AnimatedSprite.flip_h = false
+			$AnimatedSprite.position.x = 1
+	
+	if sliding == true:
+		if move.y >= 40:
+			move.y = 40
+	
 	Global.debug = str(crouch)
 	#sauter()
 	#if $wallUp1.is_colliding() and $wallDown2.is_colliding() and !is_on_floor():
@@ -107,7 +125,7 @@ func _process(delta):
 	
 	#si le joueur tombe dans dans le vide, l'animation de chute va jouer
 	#jusqu'à ce que le joueur touche un sol		
-	if jumping == false and attaque == false and Global._degat == false:
+	if jumping == false and attaque == false and Global._degat == false and sliding == false:
 		yield(get_tree().create_timer(0.02), "timeout")
 		if !is_on_floor():
 			$AnimatedSprite.animation = "fall"
@@ -241,7 +259,7 @@ func _physics_process(delta):
 
 
 func sauter():
-	if Input.is_action_just_pressed("ui_up") and Global._degat == false and Global.bodyEnteredPorte == false:
+	if Input.is_action_just_pressed("ui_up") and Global._degat == false and Global.bodyEnteredPorte == false and roofBodyEntered == false:
 		var animJump = false
 		crouch = false
 		speed = 200
@@ -255,13 +273,17 @@ func sauter():
 			jumping = false
 		
 
-		#if !is_on_floor() and nextToRightwall() and canwallJump == true:
-		#	move.y = -wallJumpY
-		#	moveX = true
+		if !is_on_floor() and nextToRightwall() and canwallJump == true:
+			move.y = -wallJumpY
+			moveX = true
+			canwallJump = false
+			jumping = true
 	
-		#if !is_on_floor() and nextToLeftwall() and canwallJump == true:
-		#	move.y = -wallJumpY
-		#	moveX = true
+		if !is_on_floor() and nextToLeftwall() and canwallJump == true:
+			move.y = -wallJumpY
+			moveX = true
+			canwallJump = false
+			jumping = true
 			
 			
 		if canJump == true:
