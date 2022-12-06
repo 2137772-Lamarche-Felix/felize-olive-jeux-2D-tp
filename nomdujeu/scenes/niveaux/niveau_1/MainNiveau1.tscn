@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/niveaux/niveau_1/niveau1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/personnages/chevalier.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://scenes/personnages/cochonAttaque.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/armes/Poele_avec_effet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/misc/Porte.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/niveaux/niveau_1/Respawn point.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/personnages/cochonTireur.tscn" type="PackedScene" id=9]
 
 [node name="Main" type="Node2D"]
@@ -19,22 +18,18 @@ position = Vector2( 1, 0 )
 position = Vector2( 1245, 387 )
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 392, 253 )
+position = Vector2( 161, 291 )
 
 [node name="pasGentil" parent="." instance=ExtResource( 3 )]
-position = Vector2( 430, 265 )
+position = Vector2( 452, 273 )
 
 [node name="Node2D2" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [node name="poele_avec_effet" parent="." instance=ExtResource( 6 )]
 position = Vector2( 874, 395 )
 
 [node name="cochonAttaque" parent="." instance=ExtResource( 5 )]
-position = Vector2( 567, 243 )
-
-[node name="respawnNiveau1" parent="." instance=ExtResource( 8 )]
-position = Vector2( 68, 268 )
+position = Vector2( 601, 245 )
 
 [node name="cochonTireur" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1034, 408 )

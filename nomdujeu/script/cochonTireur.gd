@@ -45,6 +45,8 @@ func _process(delta):
 		$CollisionShape2D.disabled = true
 		yield(get_tree().create_timer(0.3), "timeout")
 		$AnimatedSprite.animation = "dead"
+	if droite:
+		$AnimatedSprite.flip_h = true
 	
 	
 	

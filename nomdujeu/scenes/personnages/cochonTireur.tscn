@@ -166,28 +166,30 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6.99756, 7.00278 )
+extents = Vector2( 12.0836, 15.3031 )
 
 [sub_resource type="RectangleShape2D" id=34]
-extents = Vector2( 35, 6 )
+extents = Vector2( 91.5, 6 )
 
 [sub_resource type="RectangleShape2D" id=35]
-extents = Vector2( 36, 6 )
+extents = Vector2( 113, 6 )
 
 [node name="cochonTireur" type="KinematicBody2D" groups=["ennemie"]]
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 2.84217e-14, -1.42109e-14 )
+position = Vector2( 1, -3 )
+scale = Vector2( 1.23077, 1.16667 )
 frames = SubResource( 13 )
-animation = "dead"
-frame = 3
+animation = "iddleBox"
+frame = 8
 playing = true
 offset = Vector2( -2, -7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.38419e-07, -1 )
-rotation = -0.0420205
+position = Vector2( -0.100144, -8.69698 )
+rotation = 0.0120606
+scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="PositionGauche" type="Position2D" parent="."]
@@ -203,13 +205,13 @@ rotation = -0.264984
 [node name="detectGauche" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectGauche"]
-position = Vector2( -46, -3 )
+position = Vector2( -102.5, -3 )
 shape = SubResource( 34 )
 
 [node name="detectDroite" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectDroite"]
-position = Vector2( 46, -3 )
+position = Vector2( 123, -3 )
 shape = SubResource( 35 )
 
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

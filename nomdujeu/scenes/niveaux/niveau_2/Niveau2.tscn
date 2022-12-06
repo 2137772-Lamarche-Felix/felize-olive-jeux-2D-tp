@@ -352,7 +352,7 @@ tile_data = PoolIntArray( 65554, 0, 0, 65555, 0, 1, 65556, 0, 1, 65557, 0, 1, 65
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
 format = 1
-tile_data = PoolIntArray( 65546, 0, 0, 65550, 0, 0, 65587, 0, 0, 131073, 0, 0, 131074, 1, 0, 131075, 0, 0, 393217, 0, 0 )
+tile_data = PoolIntArray( 65550, 0, 0, 65587, 0, 0, 131073, 0, 0, 131074, 1, 0, 131075, 0, 0, 393217, 0, 0 )
 
 [node name="plateforme" type="TileMap" parent="."]
 tile_set = SubResource( 4 )
@@ -424,23 +424,19 @@ one_way_collision = true
 
 [node name="CollisionShape2D31" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 927, 214 )
-rotation = 6.2818
 shape = SubResource( 22 )
 one_way_collision = true
 
 [node name="CollisionShape2D34" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 848, 166 )
-rotation = 3.14064
 shape = SubResource( 22 )
 
 [node name="CollisionShape2D35" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 752, 166 )
-rotation = 3.14064
 shape = SubResource( 22 )
 
 [node name="CollisionShape2D37" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 664, 118 )
-rotation = 3.14064
 shape = SubResource( 22 )
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="StaticBody2D"]
@@ -467,8 +463,7 @@ rotation = 3.11778
 shape = SubResource( 22 )
 
 [node name="CollisionShape2D21" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 272.499, 260.996 )
-rotation = -0.00267506
+position = Vector2( 272, 262 )
 shape = SubResource( 23 )
 one_way_collision = true
 
@@ -480,7 +475,6 @@ one_way_collision = true
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 895.491, 293.828 )
-rotation = 3.13573
 shape = SubResource( 23 )
 
 [node name="CollisionShape2D23" type="CollisionShape2D" parent="StaticBody2D"]

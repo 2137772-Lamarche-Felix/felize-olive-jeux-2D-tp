@@ -23,6 +23,7 @@ func _on_Area2D_body_entered(body):
 		_destroy() 
 	if body.is_in_group("ennemie"):
 		Global._attaque = true
+		Global.currentEnnemie = str(body)
 		Global.poele = Global.poele + 1
 		_destroy()
 	

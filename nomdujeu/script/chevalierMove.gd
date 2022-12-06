@@ -82,7 +82,7 @@ func _process(delta):
 		$AnimatedSprite.animation="iddleDeath"
 		add_to_group("chevalier")	
 		Global._degat = false
-		set_global_position(Vector2(Global.positionSpawn))
+		get_tree().reload_current_scene()
 	#sert à determiner si le joueur doit être accroupis ou non
 	if Input.is_action_just_pressed("ui_down") and Global._degat == false:
 		if crouch == false:

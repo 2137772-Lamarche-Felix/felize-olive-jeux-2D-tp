@@ -20,7 +20,8 @@ func _destroy():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("chevalier"):
-		#Global._degat = true
+		Global._degat = true
+		Global.update_vie(1)
 		_destroy()
 	if !body.is_in_group("ennemie") and !body.is_in_group("projectile"):
 		_destroy() 
