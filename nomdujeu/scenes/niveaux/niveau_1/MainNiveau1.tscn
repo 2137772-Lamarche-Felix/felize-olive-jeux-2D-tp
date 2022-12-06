@@ -19,10 +19,10 @@ position = Vector2( 1, 0 )
 position = Vector2( 1245, 387 )
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 392, 253 )
+position = Vector2( 812, 369 )
 
 [node name="pasGentil" parent="." instance=ExtResource( 3 )]
-position = Vector2( 430, 265 )
+position = Vector2( 427, 252 )
 
 [node name="Node2D2" parent="." instance=ExtResource( 4 )]
 visible = false
