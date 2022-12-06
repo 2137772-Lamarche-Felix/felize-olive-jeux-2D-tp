@@ -19,6 +19,7 @@ func _ready():
 func _on_Restart_pressed():
 	Global.vieJoueur = 3
 	Global.poele = 0
+	$AudioStreamPlayer.play()
 	get_tree().change_scene("res://scenes/niveaux/niveau_1/MainNiveau1.tscn")
 
 
@@ -26,4 +27,5 @@ func _on_Restart_pressed():
 
 
 func _on_Quitter_pressed():
+	$AudioStreamPlayer.play()
 	get_tree().quit()

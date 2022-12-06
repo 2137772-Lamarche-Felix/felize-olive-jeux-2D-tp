@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/textures/Font/ancient-modern-tales-font/misc/Ancient Modern Tales-0df8.woff" type="DynamicFontData" id=1]
 [ext_resource path="res://script/Gameover.gd" type="Script" id=2]
 [ext_resource path="res://assets-CR09-02/textures/terrain/backgroundjeuxchateau.png" type="Texture" id=3]
+[ext_resource path="res://scenes/niveaux/son menu.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -55,6 +56,8 @@ margin_bottom = 52.0
 custom_fonts/font = SubResource( 3 )
 text = "Quitter"
 
+[node name="AudioStreamPlayer" parent="." instance=ExtResource( 4 )]
+
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quitter" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quitter" to="." method="_on_Quitter_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quitter" to="." method="_on_Button2_pressed"]

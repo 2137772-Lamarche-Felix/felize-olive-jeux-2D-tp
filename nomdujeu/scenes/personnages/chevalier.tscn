@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://assets/textures/chevalier/_Idle.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/chevalier/_Run.png" type="Texture" id=2]
@@ -15,6 +15,9 @@
 [ext_resource path="res://assets/textures/chevalier/_Death.png" type="Texture" id=13]
 [ext_resource path="res://assets/textures/chevalier/WallEdge/_WallHang.png" type="Texture" id=14]
 [ext_resource path="res://assets/textures/chevalier/WallEdge/_WallSlide.png" type="Texture" id=15]
+[ext_resource path="res://scenes/niveaux/jump.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/niveaux/bruit degat.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/niveaux/sword noise.tscn" type="PackedScene" id=18]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -421,6 +424,12 @@ script = ExtResource( 3 )
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." groups=["chevalier"]]
 script = ExtResource( 4 )
 
+[node name="bruitAttaque" parent="KinematicBody2D" instance=ExtResource( 18 )]
+
+[node name="bruitDegats" parent="KinematicBody2D" instance=ExtResource( 17 )]
+
+[node name="bruitSaut" parent="KinematicBody2D" instance=ExtResource( 16 )]
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="KinematicBody2D" groups=["chevalier"]]
 shape = SubResource( 1 )
 __meta__ = {
@@ -438,7 +447,7 @@ __meta__ = {
 position = Vector2( 5, -1 )
 frames = SubResource( 22 )
 animation = "iddle"
-frame = 5
+frame = 2
 speed_scale = 2.0
 playing = true
 

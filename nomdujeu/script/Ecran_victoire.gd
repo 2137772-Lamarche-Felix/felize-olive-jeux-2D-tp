@@ -11,11 +11,12 @@ func _ready():
 	$VBoxContainer.grab_focus()
 
 
-
-func _on_Start_pressed():
-	$AudioStreamPlayer.play()
-	get_tree().change_scene("res://scenes/niveaux/niveau_1/MainNiveau1.tscn")
-
 func _on_Quit_pressed():
 	$AudioStreamPlayer.play()
 	get_tree().quit()
+
+
+
+func _on_Restart_pressed():
+	$AudioStreamPlayer.play()
+	get_tree().change_scene("res://scenes/niveaux/niveau_1/MainNiveau1.tscn")

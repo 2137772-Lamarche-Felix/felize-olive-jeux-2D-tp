@@ -75,15 +75,18 @@ func _process(delta):
 	
 	#if (Global.vieJoueur == 2 or Global.vieJoueur == 1)and 
 	if Global._degat == true:
+		
 		$AnimatedSprite.animation="death"
 		$AnimatedSprite.speed_scale = 2
 		remove_from_group("chevalier")
-		#Global.vieJoueur += -1
 		yield(get_tree().create_timer(1), "timeout")
 		$AnimatedSprite.animation="iddleDeath"
 		add_to_group("chevalier")	
 		Global._degat = false
+		$bruitDegats.play()
+		yield(get_tree().create_timer(0.15), "timeout")
 		get_tree().reload_current_scene()
+		
 	#sert à determiner si le joueur doit être accroupis ou non
 	if Input.is_action_just_pressed("ui_down") and Global._degat == false:
 		if crouch == false:
@@ -117,6 +120,7 @@ func _process(delta):
 			Global.currentAnim = "attaque"
 			$AnimatedSprite.speed_scale = 2
 			attaque = true
+			$bruitAttaque.play()
 			
 			#a surment un moyen plus simple pour le faire mais sert à 
 			#mettre la hitbox de l'épé là où le joueur regarde même
@@ -270,6 +274,7 @@ func sauter():
 			Global.currentAnim = "jump"
 			$CollisionShape2D2.disabled = false
 			$Area2DPlafond/CollisionShape2D.disabled = true
+			
 	#Global.debug = move.y
 
 func lancer_poele(poele_direction: bool):

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/niveaux/niveau_2/Niveau2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/personnages/chevalier.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/misc/pic.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/armes/Poele_avec_effet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/personnages/cochonTireur.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/personnages/cochonAttaque.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/misc/Porte.tscn" type="PackedScene" id=7]
@@ -47,3 +48,6 @@ position = Vector2( 666, -82 )
 
 [node name="cochonTireur3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 930, 111 )
+
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 202, 9 )
