@@ -19,12 +19,9 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 512.5, 297 )
-scale = Vector2( 1.41528, 1.23333 )
+position = Vector2( 513.5, 300 )
+scale = Vector2( 1.41806, 1.24583 )
 texture = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Texte" type="Label" parent="."]
 margin_left = 316.0
