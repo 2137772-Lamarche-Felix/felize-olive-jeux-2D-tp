@@ -398,5 +398,5 @@ position = Vector2( 175, -168.75 )
 shape = SubResource( 23 )
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 379, -169 )
+position = Vector2( 267, -168 )
 shape = SubResource( 24 )

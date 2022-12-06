@@ -438,7 +438,7 @@ __meta__ = {
 position = Vector2( 5, -1 )
 frames = SubResource( 22 )
 animation = "iddle"
-frame = 1
+frame = 3
 speed_scale = 2.0
 playing = true
 
@@ -451,7 +451,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Area2DEpeDroite" type="Area2D" parent="KinematicBody2D"]
+[node name="Area2DEpeDroite" type="Area2D" parent="KinematicBody2D" groups=["chevalier"]]
 script = ExtResource( 12 )
 
 [node name="EpeCollisionDroite" type="CollisionShape2D" parent="KinematicBody2D/Area2DEpeDroite"]
@@ -459,7 +459,7 @@ position = Vector2( 42, 3 )
 shape = SubResource( 52 )
 disabled = true
 
-[node name="Area2DEpeGauche" type="Area2D" parent="KinematicBody2D"]
+[node name="Area2DEpeGauche" type="Area2D" parent="KinematicBody2D" groups=["chevalier"]]
 script = ExtResource( 12 )
 
 [node name="EpeCollisionGauche" type="CollisionShape2D" parent="KinematicBody2D/Area2DEpeGauche"]
@@ -504,7 +504,7 @@ cast_to = Vector2( 36, 0 )
 position = Vector2( 0, -23 )
 scale = Vector2( 0.25, 0.5 )
 enabled = true
-cast_to = Vector2( -48, 0 )
+cast_to = Vector2( -56, 0 )
 
 [node name="walljumpTimer" type="Timer" parent="KinematicBody2D"]
 

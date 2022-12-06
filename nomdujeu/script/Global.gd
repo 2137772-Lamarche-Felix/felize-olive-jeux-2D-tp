@@ -7,6 +7,8 @@ var droite = false
 
 var _degat = false
 
+var currentEnnemie = ""
+
 var currentAnim = "iddle"
 
 var nextScene = ""
