@@ -275,12 +275,14 @@ func sauter():
 
 		if !is_on_floor() and nextToRightwall() and canwallJump == true:
 			move.y = -wallJumpY
+			$bruitSaut.play()
 			moveX = true
 			canwallJump = false
 			jumping = true
 	
 		if !is_on_floor() and nextToLeftwall() and canwallJump == true:
 			move.y = -wallJumpY
+			$bruitSaut.play()
 			moveX = true
 			canwallJump = false
 			jumping = true
@@ -289,6 +291,7 @@ func sauter():
 		if canJump == true:
 			move.y -= jump
 			canJump = false
+			$bruitSaut.play()
 			
 		if attaque == false and animJump == true:
 			jumping = true
