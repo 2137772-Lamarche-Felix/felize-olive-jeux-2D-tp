@@ -21,7 +21,6 @@ var droite = false
 
 
 func _process(delta):
-	
 	var currentCochon = str($".")
 	if Global.currentEnnemie == currentCochon:
 		current = true
