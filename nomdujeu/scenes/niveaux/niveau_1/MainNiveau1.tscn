@@ -19,7 +19,7 @@ position = Vector2( 1, 0 )
 position = Vector2( 1245, 387 )
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 228, -92 )
+position = Vector2( 116, 282 )
 
 [node name="pasGentil" parent="." instance=ExtResource( 3 )]
 position = Vector2( 430, 265 )
