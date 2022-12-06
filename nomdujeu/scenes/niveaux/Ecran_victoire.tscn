@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets-CR09-02/textures/terrain/backgroundjeuxchateau.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/Font/ancient-modern-tales-font/misc/Ancient Modern Tales-0df8.woff" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[node name="Ecran_victoire" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 511.5, 300.5 )
+scale = Vector2( 1.41806, 1.24375 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 288.0
+margin_top = 139.0
+margin_right = 406.0
+margin_bottom = 157.0
+rect_scale = Vector2( 5, 5 )
+custom_fonts/font = SubResource( 1 )
+text = "Vous avez gagner !"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 282.0
+margin_top = 375.0
+margin_right = 528.0
+margin_bottom = 427.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="Restart" type="Button" parent="VBoxContainer"]
+margin_right = 246.0
+margin_bottom = 20.0
+text = "Restart"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 246.0
+margin_bottom = 44.0
+text = "Quitter"
