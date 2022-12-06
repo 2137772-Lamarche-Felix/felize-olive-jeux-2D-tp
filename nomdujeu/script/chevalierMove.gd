@@ -101,9 +101,10 @@ func _process(delta):
 		$AnimatedSprite.animation="iddleDeath"
 		add_to_group("chevalier")	
 		Global._degat = false
+		if Global.vieJoueur > 0:
+			get_tree().reload_current_scene()
 		$bruitDegats.play()
 		yield(get_tree().create_timer(0.15), "timeout")
-		get_tree().reload_current_scene()
 		
 	#sert à determiner si le joueur doit être accroupis ou non
 	if Input.is_action_just_pressed("ui_down") and Global._degat == false:
