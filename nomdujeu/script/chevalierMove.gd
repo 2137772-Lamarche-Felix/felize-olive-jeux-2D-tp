@@ -52,6 +52,7 @@ func _on_Area2D_body_exited(body):
 #fonction qui prend les données de move et de delta pour ensuite faire bouger
 #le joueur comme il l'a demandé
 func _process(delta):
+	Global.debug = str(crouch)
 	#sauter()
 	#if $wallUp1.is_colliding() and $wallDown2.is_colliding() and !is_on_floor():
 	#	slide = true
@@ -97,8 +98,9 @@ func _process(delta):
 			speed = 200
 			$Area2DPlafond/CollisionShape2D.disabled = true
 			$CollisionShape2D2.disabled = false
-			$AnimatedSprite.animation="CrouchToWalk"
+			#$AnimatedSprite.animation="CrouchToWalk"
 			Global.currentAnim = "crouchToWalk"
+
 	
 	#si le joueur tombe dans dans le vide, l'animation de chute va jouer
 	#jusqu'à ce que le joueur touche un sol		
@@ -237,14 +239,17 @@ func _physics_process(delta):
 func sauter():
 	if Input.is_action_just_pressed("ui_up") and Global._degat == false and Global.bodyEnteredPorte == false:
 		var animJump = false
-		
+		crouch = false
+		speed = 200
 		if roofBodyEntered == false and is_on_floor():
 			canJump = true
 			animJump = true
 			canwallJump = true
+			jumping = true
 		else:
 			canJump = false
-			
+			jumping = false
+		
 
 		#if !is_on_floor() and nextToRightwall() and canwallJump == true:
 		#	move.y = -wallJumpY
@@ -257,7 +262,6 @@ func sauter():
 			
 		if canJump == true:
 			move.y -= jump
-			crouch = false
 			canJump = false
 			
 		if attaque == false and animJump == true:
@@ -266,7 +270,7 @@ func sauter():
 			Global.currentAnim = "jump"
 			$CollisionShape2D2.disabled = false
 			$Area2DPlafond/CollisionShape2D.disabled = true
-	Global.debug = move.y
+	#Global.debug = move.y
 
 func lancer_poele(poele_direction: bool):
 	if Poele:
