@@ -246,13 +246,13 @@ func sauter():
 			canJump = false
 			
 
-		if !is_on_floor() and nextToRightwall() and canwallJump == true:
-			move.y = -wallJumpY
-			moveX = true
+		#if !is_on_floor() and nextToRightwall() and canwallJump == true:
+		#	move.y = -wallJumpY
+		#	moveX = true
 	
-		if !is_on_floor() and nextToLeftwall() and canwallJump == true:
-			move.y = -wallJumpY
-			moveX = true
+		#if !is_on_floor() and nextToLeftwall() and canwallJump == true:
+		#	move.y = -wallJumpY
+		#	moveX = true
 			
 			
 		if canJump == true:
